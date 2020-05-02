@@ -15,55 +15,56 @@
 
 <p align="center">
   <br>
-  <b>Available in</b>
+  <b>Доступно в</b>
   <br>
   <img src="https://i.imgur.com/1wJVDV5.png">
 </p>
 
-Concept behind Seeker is simple, just like we host phishing pages to get credentials why not host a fake page that requests your location like many popular location based websites. Read more on <a href="https://thewhiteh4t.github.io"> thewhiteh4t's Blog </a>.Seeker Hosts a fake website on **In Built PHP Server** and uses **Serveo** to generate a link which we will forward to the target, website asks for Location Permission and if the target allows it, we can get :
+Концепция Seeker проста, подобно тому, как мы размещаем фишинговые страницы для получения учетных данных, почему бы не разместить поддельную страницу, которая запрашивает ваше местоположение, как многие популярные веб-сайты, основанные на местоположении. Узнайте больше на <a href="https://thewhiteh4t.github.io"> блоге thewhiteh4t </a>. Seeker размещает поддельный веб-сайт на ** встроенном PHP-сервере ** и использует ** Serveo ** для создания ссылка, которую мы передадим на цель, веб-сайт запрашивает разрешение на местоположение и, если цель позволяет, мы можем получить:
 
-* Longitude
-* Latitude
-* Accuracy
-* Altitude - Not always available
-* Direction - Only available if user is moving
-* Speed - Only available if user is moving
+* Долгота
+* Широта
+* Точность
+* Высота - не всегда доступна
+* Направление - доступно только если пользователь движется
+* Скорость - Доступно только если пользователь движется
 
-Along with Location Information we also get **Device Information** without any permissions :
+Наряду с информацией о местоположении мы также получаем ** информацию об устройстве ** без каких-либо разрешений:
 
-* Operating System
-* Platform
-* Number of CPU Cores
-* Amount of RAM - Approximate Results
-* Screen Resolution
-* GPU information
-* Browser Name and Version
-* Public IP Address
-* IP Address Reconnaissance
+* Операционная система
+* Платформа
+* Количество ядер процессора
+* Объем оперативной памяти - приблизительные результаты
+* Разрешение экрана
+* Информация о GPU
+* Имя и версия браузера
+* Публичный IP-адрес
+* Разведка IP-адреса
 
-**This tool is a Proof of Concept and is for Educational Purposes Only, Seeker shows what data a malicious website can gather about you and your devices and why you should not click on random links and allow critical permissions such as Location etc.**
+** Этот инструмент является проверкой концепции и предназначен только для образовательных целей. Seeker показывает, какие данные может собирать вредоносный веб-сайт о вас и ваших устройствах, и почему вы не должны нажимать на случайные ссылки и разрешать критические разрешения, такие как местоположение и т. Д. **
 
-## How is this Different from IP GeoLocation
+## Чем это отличается от IP-геолокации?
 
-* Other tools and services offer IP Geolocation which is NOT accurate at all and does not give location of the target instead it is the approximate location of the ISP.
+* Другие инструменты и сервисы предлагают IP-геолокацию, которая НЕ является точной и не дает определения местоположения цели, а является приблизительным местоположением провайдера.
 
-* Seeker uses HTML API and gets Location Permission and then grabs Longitude and Latitude using GPS Hardware which is present in the device, so Seeker works best with Smartphones, if the GPS Hardware is not present, such as on a Laptop, Seeker fallbacks to IP Geolocation or it will look for Cached Coordinates.  
+* Seeker использует HTML API и получает разрешение на местоположение, а затем захватывает долготу и широту с помощью GPS-оборудования, которое присутствует в устройстве, поэтому Seeker лучше всего работает со смартфонами, если отсутствует GPS-оборудование, например, на ноутбуке, Seeker откатывается на IP Геолокация или он будет искать кэшированные координаты.
 
-* Generally if a user accepts location permsission, Accuracy of the information recieved is **accurate to approximately 30 meters**, Accuracy Depends on the Device.
+* Как правило, если пользователь принимает разрешение на определение местоположения, точность полученной информации составляет ** с точностью приблизительно до 30 метров **, точность зависит от устройства.
 
-**Note** : On iPhone due to some reason location accuracy is approximately 65 meters.
+** Примечание **: На iPhone по какой-то причине точность определения местоположения составляет приблизительно 65 метров.
 
-## Templates
+## Шаблоны
 
-You can choose a template which will be used by seeker from these : 
+Вы можете выбрать шаблон, который будет использоваться на сайте:
 
 * NearYou
 * Google Drive (Suggested by @Akaal_no_one)
 * WhatsApp (Suggested by @Dazmed707)
 
-## Tested On :
+## Тестировалось на  :
 
 * Kali Linux 2019.2
+* Deepin Linux
 * BlackArch Linux
 * Ubuntu 19.04
 * Kali Nethunter
@@ -102,7 +103,7 @@ chmod 777 termux_install.sh
 ./termux_install.sh
 ```
 
-## Usage
+## Использование
 
 ```bash
 python3 seeker.py -h
@@ -110,60 +111,60 @@ python3 seeker.py -h
 usage: seeker.py [-h] [-s SUBDOMAIN]
 
 optional arguments:
-  -h, --help                              show this help message and exit
-  -s SUBDOMAIN, --subdomain Subdomain 	  Provide Subdomain for Serveo URL ( Optional )
-  -k KML, --kml KML                       Provide KML Filename ( Optional )
-  -t TUNNEL, --tunnel TUNNEL              Specify Tunnel Mode [manual]
+   -h, --help             показать это справочное сообщение и выйти
+   -s SUBDOMAIN,        --subdomain Поддомен Укажите поддомен для URL-адреса Serveo (необязательно)
+   -k KML,              --kml KML Предоставить имя файла KML (необязательно)
+   -t TUNNEL,           --tunnel TUNNEL Указать туннельный режим [руководство]
 
-# Example
+# Пример
 
-# SERVEO 
+# SERVEO
 ########
 python3 seeker.py
 
 # NGROK ETC.
 ############
 
-# In First Terminal Start seeker in Manual mode like this
-python3 seeker.py -t manual
+# В First Terminal Start ищущий в ручном режиме, как это
+python3 seeker.py -t руководство
 
-# In Second Terminal Start Ngrok or any other tunnel service on port 8080
+# Во втором терминале запустите Ngrok или любой другой туннельный сервис на порту 8080
 ./ngrok http 8080
 
-#-----------------------------------#
+# ----------------------------------- #
 
-# Subdomain
-########### 
+# Субдомен
+###########
 python3 seeker.py --subdomain google
-python3 seeker.py --tunnel manual --subdomain zomato
+python3 seeker.py - руководство по туннелю - subdomain zomato
 
-#-----------------------------------#
+# ----------------------------------- #
 
 # Docker Usage
 ##############
 
 # SERVEO
 ########
-docker run -t --rm thewhiteh4t/seeker
+docker run -t --rm thewhiteh4t / seeker
 
 # NGROK
 #######
 
-# Step 1
-docker network create ngroknet
+# Шаг 1
+докерную сеть создаю нгрокнет
 
-# Step 2
-docker run --rm -t --net ngroknet --name seeker thewhiteh4t/seeker python3 seeker.py -t manual
+# Шаг 2
+docker run --rm -t --net ngroknet - имя ищущего thewhiteh4t / seeker python3 seeker.py -t руководство
 
-# Step 3
-docker run --rm -t --net ngroknet --name ngrok wernight/ngrok ngrok http seeker:8080
-```
+# Шаг 3
+запуск докера --rm -t --net ngroknet - имя ngrok wernight / ngrok ngrok http seeker: 8080
+`` `
 
-## Known Problems
+## Известные проблемы
 
-* Services like Serveo and Ngrok are banned in some countries such as Russia etc., so if it's banned in your country you may not get a URL, if not then first READ CLOSED ISSUES, if your problem is not listed, create a new issue.
+* Такие службы, как Serveo и Ngrok, запрещены в некоторых странах, таких как Россия и т. Д., Поэтому, если они запрещены в вашей стране, вы можете не получить URL-адрес, если нет, то сначала ПРОЧИТАЙТЕ ЗАКРЫТЫЕ ПРОБЛЕМЫ, если вашей проблемы нет в списке, создайте новую проблему ,
 
-## Demo
+## Демо
 
 <p align="center">
 	<a href="https://www.youtube.com/watch?v=FEyAPjkJFrk"><img src="https://i.imgur.com/48yrleF.png"></a>
