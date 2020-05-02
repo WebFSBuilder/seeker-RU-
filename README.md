@@ -140,25 +140,32 @@ python3 seeker.py - руководство по туннелю - subdomain zomat
 
 # ----------------------------------- #
 
+# Subdomain
+########### 
+python3 seeker.py --subdomain google
+python3 seeker.py --tunnel manual --subdomain zomato
+
+#-----------------------------------#
+
 # Docker Usage
 ##############
 
 # SERVEO
 ########
-docker run -t --rm thewhiteh4t / seeker
+docker run -t --rm thewhiteh4t/seeker
 
 # NGROK
 #######
 
-# Шаг 1
-докерную сеть создаю нгрокнет
+# Step 1
+docker network create ngroknet
 
-# Шаг 2
-docker run --rm -t --net ngroknet - имя ищущего thewhiteh4t / seeker python3 seeker.py -t руководство
+# Step 2
+docker run --rm -t --net ngroknet --name seeker thewhiteh4t/seeker python3 seeker.py -t manual
 
-# Шаг 3
-запуск докера --rm -t --net ngroknet - имя ngrok wernight / ngrok ngrok http seeker: 8080
-`` `
+# Step 3
+docker run --rm -t --net ngroknet --name ngrok wernight/ngrok ngrok http seeker:8080
+```
 
 ## Известные проблемы
 
